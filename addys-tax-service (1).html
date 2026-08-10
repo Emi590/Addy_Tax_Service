@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Addy's Tax Service | CTEC Registered Tax Preparer &amp; Notary Public</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --paper:#f7f7f5;
+    --royal:#2b3fb0;
+    --royal-dark:#1c2b80;
+    --red:#c81d34;
+    --red-dark:#9f1526;
+    --ink:#141414;
+    --ink-soft:#3d3d3d;
+    --line:#e2e2df;
+  }
+  *{box-sizing:border-box; min-width:0;}
+  html{scroll-behavior:smooth;}
+  html, body{ max-width:100%; overflow-x:hidden; }
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    color:var(--ink);
+    margin:0;
+  }
+  a{color:inherit;}
+  img,svg{display:block;}
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- Skip link ---------- */
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--royal); color:#fff;
+    padding:10px 16px; z-index:200; border-radius:0 0 6px 0;
+  }
+  .skip-link:focus{ left:0; }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,0.94);
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Fraunces', serif;
+    font-weight:700; font-size:1.28rem;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+  }
+  .brand .mark{
+    width:38px;height:38px;flex:0 0 auto;
+  }
+  .brand .name-line1{display:block; font-size:1.1rem; line-height:1.05;}
+  .brand .name-line2{
+    display:block; font-family:'Inter',sans-serif; font-weight:600;
+    font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--royal); margin-top:2px;
+  }
+  nav.links{
+    display:flex; align-items:center; gap:32px;
+  }
+  nav.links a{
+    text-decoration:none; font-weight:600; font-size:0.92rem;
+    color:var(--ink-soft);
+    position:relative;
+    padding:4px 0;
+  }
+  nav.links a:hover, nav.links a:focus-visible{ color:var(--ink); }
+  nav.links a::after{
+    content:""; position:absolute; left:0; right:0; bottom:-3px; height:2px;
+    background:var(--red); transform:scaleX(0); transform-origin:left;
+    transition:transform .2s ease;
+  }
+  nav.links a:hover::after, nav.links a:focus-visible::after{ transform:scaleX(1); }
+  .call-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--red); color:#fff !important; text-decoration:none;
+    padding:11px 18px; border-radius:3px; font-weight:700; font-size:0.9rem;
+    white-space:nowrap;
+    transition:background .15s ease;
+  }
+  .call-btn:hover, .call-btn:focus-visible{ background:var(--red-dark); }
+  .menu-toggle{
+    display:none; background:none; border:1px solid var(--line); border-radius:4px;
+    padding:8px 10px; cursor:pointer;
+  }
+  .menu-toggle span{ display:block; width:20px; height:2px; background:var(--ink); margin:4px 0; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px;
+    align-items:center;
+    padding-top:76px; padding-bottom:76px;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.76rem; font-weight:700; letter-spacing:0.13em; text-transform:uppercase;
+    color:var(--royal); margin-bottom:20px;
+  }
+  .eyebrow::before{
+    content:""; width:22px; height:2px; background:var(--red); display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 4.4vw, 3.6rem);
+    line-height:1.06; letter-spacing:-0.015em;
+  }
+  .hero h1 em{
+    font-style:normal; color:var(--royal);
+  }
+  .hero p.lead{
+    font-size:1.12rem; line-height:1.6; color:var(--ink-soft);
+    max-width:46ch; margin-top:22px;
+  }
+  .hero-ctas{ display:flex; gap:14px; margin-top:34px; flex-wrap:wrap; }
+  .btn-primary{
+    background:var(--royal); color:#fff; text-decoration:none;
+    padding:14px 24px; border-radius:3px; font-weight:700; font-size:0.95rem;
+    display:inline-flex; align-items:center; gap:10px;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .btn-primary:hover, .btn-primary:focus-visible{ background:var(--royal-dark); transform:translateY(-1px); }
+  .btn-secondary{
+    background:transparent; color:var(--ink); text-decoration:none;
+    padding:14px 22px; border-radius:3px; font-weight:700; font-size:0.95rem;
+    border:1.5px solid var(--ink);
+    display:inline-flex; align-items:center; gap:10px;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .btn-secondary:hover, .btn-secondary:focus-visible{ border-color:var(--red); color:var(--red); }
+
+  .hero-seal-wrap{
+    display:flex; justify-content:center; align-items:center;
+  }
+  .seal{
+    width:min(340px, 82vw);
+    height:auto;
+    filter:drop-shadow(0 18px 30px rgba(20,20,20,0.12));
+  }
+  .seal .spin{
+    transform-origin:200px 200px;
+    animation:spin 40s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  /* ---------- Trust strip ---------- */
+  .trust-strip{
+    border-bottom:1px solid var(--line);
+  }
+  .trust-strip .wrap{
+    display:flex; flex-wrap:wrap; gap:14px 40px;
+    padding:26px 28px;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .trust-item{
+    display:flex; align-items:center; gap:10px;
+    font-size:0.88rem; font-weight:600; color:var(--ink-soft);
+  }
+  .trust-item .dot{
+    width:8px; height:8px; border-radius:50%; background:var(--red); flex:0 0 auto;
+  }
+
+  /* ---------- Section shared ---------- */
+  section{ padding:88px 0; }
+  .section-head{
+    max-width:640px; margin-bottom:52px;
+  }
+  .section-tag{
+    font-size:0.76rem; font-weight:700; letter-spacing:0.13em; text-transform:uppercase;
+    color:var(--red); margin-bottom:14px; display:block;
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem, 3vw, 2.4rem); letter-spacing:-0.01em; line-height:1.15;
+  }
+  .section-head p{
+    color:var(--ink-soft); font-size:1.02rem; line-height:1.6; margin-top:16px;
+  }
+
+  /* ---------- Services ---------- */
+  .services{ background:var(--white); }
+  .service-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:2px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  .service-card{
+    background:var(--white); padding:40px;
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .service-card .icon{
+    width:52px; height:52px;
+  }
+  .service-card h3{ font-size:1.35rem; letter-spacing:-0.01em; }
+  .service-card p{ color:var(--ink-soft); line-height:1.65; font-size:0.98rem; }
+  .service-card ul{
+    margin:6px 0 0; padding:0; list-style:none;
+    display:flex; flex-direction:column; gap:9px;
+  }
+  .service-card li{
+    font-size:0.92rem; color:var(--ink-soft);
+    padding-left:20px; position:relative;
+  }
+  .service-card li::before{
+    content:""; position:absolute; left:0; top:8px;
+    width:9px; height:2px; background:var(--royal);
+  }
+  .service-card.notary li::before{ background:var(--red); }
+
+  /* ---------- About / Credentials ---------- */
+  .about{ background:var(--royal); color:#fff; }
+  .about .wrap{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start;
+  }
+  .about .section-tag{ color:#ffb9c1; }
+  .about h2{ color:#fff; }
+  .about p.lead{ color:#dfe3fb; font-size:1.05rem; line-height:1.7; margin-top:18px; }
+  .badges{ display:flex; flex-direction:column; gap:18px; }
+  .badge{
+    display:flex; align-items:center; gap:16px;
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:6px; padding:18px 20px;
+  }
+  .badge .mini-seal{ width:52px; height:52px; flex:0 0 auto; }
+  .badge h4{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.02rem; color:#fff; margin:0 0 4px;
+  }
+  .badge p{ margin:0; font-size:0.86rem; color:#c9cff6; line-height:1.4; }
+
+  /* ---------- Process ---------- */
+  .process{ background:var(--paper); }
+  .steps{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:8px;
+  }
+  .step{ position:relative; padding-top:26px; }
+  .step .num{
+    font-family:'Fraunces', serif; font-weight:700; font-size:0.8rem;
+    color:var(--red); letter-spacing:0.06em; margin-bottom:12px; display:block;
+  }
+  .step h3{ font-size:1.1rem; margin-bottom:10px; }
+  .step p{ color:var(--ink-soft); font-size:0.94rem; line-height:1.6; }
+  .step + .step{ border-top:1px solid var(--line); }
+  @media (min-width:760px){
+    .step + .step{ border-top:none; border-left:1px solid var(--line); padding-left:32px; }
+  }
+
+  /* ---------- Contact ---------- */
+  .contact{
+    background:var(--ink); color:#fff;
+  }
+  .contact .wrap{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;
+  }
+  .contact .section-tag{ color:#ff8b98; }
+  .contact h2{ color:#fff; }
+  .contact p.lead{ color:#cfcfcf; margin-top:16px; line-height:1.65; font-size:1.02rem; }
+  .contact-card{
+    background:#1e1e1e; border:1px solid #333; border-radius:8px; padding:34px;
+  }
+  .contact-row{
+    display:flex; align-items:flex-start; gap:16px;
+    padding:16px 0; border-bottom:1px solid #333;
+  }
+  .contact-row:last-child{ border-bottom:none; padding-bottom:0; }
+  .contact-row:first-child{ padding-top:0; }
+  .contact-row .ic{ width:22px; height:22px; flex:0 0 auto; margin-top:2px; }
+  .contact-row .label{
+    font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:#9a9a9a; margin-bottom:4px;
+  }
+  .contact-row a{ text-decoration:none; font-weight:700; font-size:1.08rem; color:#fff; }
+  .contact-row a:hover{ color:var(--red); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:#0c0c0c; color:#9a9a9a; padding:36px 0;
+    border-top:1px solid #232323;
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer .fbrand{ color:#fff; font-family:'Fraunces',serif; font-weight:700; font-size:1rem; }
+  footer .fnote{ font-size:0.82rem; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    nav.links{
+      position:fixed; inset:66px 0 auto 0; background:#fff; flex-direction:column;
+      align-items:flex-start; gap:0; padding:8px 28px 20px; border-bottom:1px solid var(--line);
+      transform:translateY(-130%); transition:transform .22s ease; box-shadow:0 12px 24px rgba(0,0,0,0.06);
+    }
+    nav.links.open{ transform:translateY(0); }
+    nav.links a{ padding:14px 0; width:100%; border-bottom:1px solid var(--line); }
+    nav.links .call-btn{ margin-top:12px; }
+    .menu-toggle{ display:block; }
+    .hero .wrap{ grid-template-columns:1fr; padding-top:48px; padding-bottom:48px; gap:40px; }
+    .hero-seal-wrap{ order:-1; }
+    .seal{ width:220px; }
+    .about .wrap{ grid-template-columns:1fr; }
+    .service-grid{ grid-template-columns:1fr; }
+    .steps{ grid-template-columns:1fr; }
+    .contact .wrap{ grid-template-columns:1fr; }
+    section{ padding:64px 0; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" fill="#2b3fb0"/>
+        <circle cx="20" cy="20" r="19" fill="none" stroke="#c81d34" stroke-width="2"/>
+        <circle cx="20" cy="20" r="13.5" fill="none" stroke="#ffffff" stroke-width="1"/>
+        <text x="20" y="24" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="15" fill="#ffffff">A</text>
+      </svg>
+      <span>
+        <span class="name-line1">Addy's Tax Service</span>
+        <span class="name-line2">Tax Prep &amp; Notary Public</span>
+      </span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" id="menuToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#about">About Addy</a>
+      <a href="#process">How It Works</a>
+      <a href="#contact">Contact</a>
+      <a class="call-btn" href="tel:+17078168479">Call (707) 816-8479</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">CTEC Registered &middot; Notary Public</span>
+        <h1>Your taxes filed right.<br>Your documents <em>signed right here.</em></h1>
+        <p class="lead">Addy's Tax Service brings CTEC-registered tax preparation and full notary public services together under one roof &mdash; accurate, personal, and easy to reach when you need it.</p>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="tel:+17078168479">
+            Call (707) 816-8479
+          </a>
+          <a class="btn-secondary" href="mailto:addytax1040@gmail.com">
+            Email Addy
+          </a>
+        </div>
+      </div>
+      <div class="hero-seal-wrap">
+        <svg class="seal" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Official seal: CTEC Registered Tax Preparer and Notary Public">
+          <g class="spin">
+            <circle cx="200" cy="200" r="188" fill="none" stroke="#c81d34" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+          </g>
+          <circle cx="200" cy="200" r="168" fill="#2b3fb0"/>
+          <circle cx="200" cy="200" r="168" fill="none" stroke="#ffffff" stroke-width="2"/>
+          <circle cx="200" cy="200" r="140" fill="none" stroke="#ffffff" stroke-width="1.4" stroke-dasharray="1 6" stroke-linecap="round"/>
+          <path id="seal-top-path" d="M 78 200 A 122 122 0 0 1 322 200" fill="none"/>
+          <path id="seal-bottom-path" d="M 322 200 A 122 122 0 0 1 78 200" fill="none"/>
+          <text font-family="Inter, sans-serif" font-weight="700" font-size="14.5" letter-spacing="3" fill="#ffffff">
+            <textPath href="#seal-top-path" startOffset="50%" text-anchor="middle">CTEC REGISTERED PREPARER</textPath>
+          </text>
+          <text font-family="Inter, sans-serif" font-weight="700" font-size="14.5" letter-spacing="3" fill="#ffffff">
+            <textPath href="#seal-bottom-path" startOffset="50%" text-anchor="middle">STATE OF CALIFORNIA</textPath>
+          </text>
+          <circle cx="200" cy="200" r="80" fill="#ffffff"/>
+          <circle cx="200" cy="200" r="80" fill="none" stroke="#c81d34" stroke-width="3"/>
+          <text x="200" y="175" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="27" fill="#141414">Addy's</text>
+          <text x="200" y="200" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="20" fill="#141414">Tax Service</text>
+          <text x="200" y="220" text-anchor="middle" font-family="Fraunces, serif" font-weight="600" font-size="16" fill="#c81d34">&amp;</text>
+          <text x="200" y="242" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="11" letter-spacing="2" fill="#c81d34">NOTARY PUBLIC</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="wrap">
+      <div class="trust-item"><span class="dot"></span>CTEC Registered Tax Preparer</div>
+      <div class="trust-item"><span class="dot"></span>Commissioned Notary Public</div>
+      <div class="trust-item"><span class="dot"></span>Se Habla Español</div>
+      <div class="trust-item"><span class="dot"></span>Personal, one-on-one service</div>
+      <div class="trust-item"><span class="dot"></span>(707) 816-8479</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">Services</span>
+        <h2>Two things done well, not ten things done rushed.</h2>
+        <p>Addy focuses on individual tax preparation and mobile notary public work &mdash; the two things people need done correctly, on time, and without the runaround.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card tax">
+          <svg class="icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="9" y="5" width="30" height="42" rx="2" fill="#eef0fb" stroke="#2b3fb0" stroke-width="2"/>
+            <line x1="16" y1="16" x2="32" y2="16" stroke="#2b3fb0" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="23" x2="32" y2="23" stroke="#2b3fb0" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="30" x2="26" y2="30" stroke="#2b3fb0" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="36" cy="37" r="9" fill="#c81d34"/>
+            <path d="M32 37l3 3 5-6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <h3>Tax Preparation</h3>
+          <p>CTEC-registered preparation for individuals and families, filed accurately and explained in plain language.</p>
+          <ul>
+            <li>Individual federal &amp; California state returns</li>
+            <li>Prior-year and amended returns</li>
+            <li>Self-employed &amp; 1099 income</li>
+            <li>Year-round filing support</li>
+          </ul>
+        </div>
+        <div class="service-card notary">
+          <svg class="icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="26" cy="22" r="15" fill="#fbecec" stroke="#c81d34" stroke-width="2"/>
+            <circle cx="26" cy="22" r="9" fill="none" stroke="#c81d34" stroke-width="1.5" stroke-dasharray="1.5 3"/>
+            <path d="M26 15v14M20 22h12" stroke="#c81d34" stroke-width="2" stroke-linecap="round"/>
+            <path d="M15 46l4-13 4 4 3-5 4 14z" fill="#2b3fb0"/>
+          </svg>
+          <h3>Notary Public</h3>
+          <p>Fast, reliable notarization for the documents that need it most &mdash; scheduled around you, with attention to detail on every signature.</p>
+          <ul>
+            <li>Loan &amp; real estate documents</li>
+            <li>Power of attorney &amp; affidavits</li>
+            <li>Mobile appointments available</li>
+            <li>Same-week scheduling</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / CREDENTIALS -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div>
+        <span class="section-tag">About Addy</span>
+        <h2>A licensed preparer who treats your paperwork like it's her own.</h2>
+        <p class="lead">Addy's Tax Service was built on a simple idea: taxes and notarizations should be handled by someone local, licensed, and easy to talk to. Every return and every signature gets the same close attention, whether it's a simple form or a stack of loan documents.</p>
+      </div>
+      <div class="badges">
+        <div class="badge">
+          <svg class="mini-seal" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="30" cy="30" r="27" fill="#ffffff" fill-opacity="0.12"/>
+            <circle cx="30" cy="30" r="27" fill="none" stroke="#ffffff" stroke-width="1.4"/>
+            <circle cx="30" cy="30" r="19" fill="none" stroke="#c81d34" stroke-width="2"/>
+            <text x="30" y="27" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="12" fill="#ffffff">CTEC</text>
+            <text x="30" y="39" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="7" fill="#ffb9c1">REGISTERED</text>
+          </svg>
+          <div>
+            <h4>CTEC Registered Tax Preparer</h4>
+            <p>Registered with the California Tax Education Council, meeting the state's requirements for professional tax preparation.</p>
+          </div>
+        </div>
+        <div class="badge">
+          <svg class="mini-seal" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="30" cy="30" r="27" fill="#ffffff" fill-opacity="0.12"/>
+            <circle cx="30" cy="30" r="27" fill="none" stroke="#ffffff" stroke-width="1.4"/>
+            <circle cx="30" cy="30" r="19" fill="none" stroke="#c81d34" stroke-width="2"/>
+            <text x="30" y="28" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="10.5" fill="#ffffff">NOTARY</text>
+            <text x="30" y="39" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="7" fill="#ffb9c1">PUBLIC</text>
+          </svg>
+          <div>
+            <h4>Commissioned Notary Public</h4>
+            <p>Authorized to witness signatures and notarize a wide range of personal, financial, and real estate documents.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">How It Works</span>
+        <h2>Simple to start, easy to finish.</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="num">Step 1</span>
+          <h3>Reach out</h3>
+          <p>Call or email with what you need &mdash; a tax return, a document notarized, or both. Addy will walk you through what to bring.</p>
+        </div>
+        <div class="step">
+          <span class="num">Step 2</span>
+          <h3>Book your time</h3>
+          <p>Schedule an appointment that fits your week. Mobile notary public visits can be arranged when you can't come in.</p>
+        </div>
+        <div class="step">
+          <span class="num">Step 3</span>
+          <h3>Get it handled</h3>
+          <p>Your return is prepared and filed, or your documents are signed and sealed &mdash; correctly, the first time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div>
+        <span class="section-tag">Get In Touch</span>
+        <h2>Let's get your taxes &mdash; or your documents &mdash; taken care of.</h2>
+        <p class="lead">Reach out by phone or email and Addy will get back to you to schedule your appointment.</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 5c0-1.1.9-2 2-2h2.2c.5 0 .95.34 1.08.83l1 3.75a1.1 1.1 0 0 1-.3 1.1L8.5 10.2a14 14 0 0 0 5.3 5.3l1.52-1.48a1.1 1.1 0 0 1 1.1-.3l3.75 1c.49.13.83.58.83 1.08V18c0 1.1-.9 2-2 2h-1C10.6 20 4 13.4 4 5Z" stroke="#c81d34" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <div class="label">Phone</div>
+            <a href="tel:+17078168479">(707) 816-8479</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="#c81d34" stroke-width="1.6"/>
+            <path d="M4 6.5 12 13l8-6.5" stroke="#c81d34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <div class="label">Email</div>
+            <a href="mailto:addytax1040@gmail.com">addytax1040@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="fbrand">Addy's Tax Service</span>
+    <span class="fnote">CTEC Registered Tax Preparer &amp; Notary Public &middot; (707) 816-8479 &middot; addytax1040@gmail.com</span>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+</body>
+</html>
